@@ -10,7 +10,64 @@ Run the web app through app.py. Debug mode is on currently.
   * Ajax - get list of flights associated with campaign
   * Confirm tool can parse different creative templates
   * Refactor code so as not to be a complete mess
-  
+
+
+# Objects, Methods, and Attributes
+  * dfareporting_utils
+    - self-contained pieces. Avoid digging into this for as long as possible
+
+  * 3rdPartyAccount
+    - login()
+    -
+
+  * Advertiser
+    - sasName
+    - sasID
+    - 3rdPartyID //default to None
+
+  * Campaign
+    - Flights []
+    - Advertiser
+    - sasID
+
+
+  * Flight
+    - startDate
+    - endDate
+    - Impression Goal
+    - Impressions Served
+    - Clicks
+    - CTR
+
+  * File
+    - extension/filetype
+    - filepath
+    - parse()
+    - Accumulate/reduce()
+    - returnID()
+
+  * Report
+    - parameters
+      * sasAdvertiser
+      * startDate
+      * endDate
+      * Campaign //default None
+      * Flights [] //default None
+
+    - sasReportId
+    - sasReportStatus // while loop when reportStatus != 200
+    - sasReportFile
+
+  * Payload
+    //Data to be sent to templates or to JS functions
+    - dict
+
+
+
+
+
+
+
 
 ## Documentation
 
