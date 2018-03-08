@@ -26,13 +26,14 @@ class Report(object):
         self.sas = None
 
         # This may end up being a dictionary or a report subclass.
-        self.parameters = { "start_date": ("tactical_report[date_gte]", None),
-                            "end_date": ("tactical_report[date_lte]", None),
-                            "break_down_by": ("tactical_report[break_down_by]", "Day"),
-                            "advertiser_id": ("tactical_report[advertiser_id]", None),
-                            "campaigns": ("tactical_report[campaigns][]", None),
-                            "flights": ("tactical_report[flights][]", None),
-                            "creatives": ("tactical_report[creatives][]", None)
+        self.parameters = {
+            "start_date": ("tactical_report[date_gte]", None),
+            "end_date": ("tactical_report[date_lte]", None),
+            "break_down_by": ("tactical_report[break_down_by]", "Day"),
+            "advertiser_id": ("tactical_report[advertiser_id]", None),
+            "campaigns": ("tactical_report[campaigns][]", None),
+            "flights": ("tactical_report[flights][]", None),
+            "creatives": ("tactical_report[creatives][]", None)
         }
 
 
