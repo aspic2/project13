@@ -5,6 +5,10 @@ Connect our 1st and 3rd party data into one intuitive interface.
 ## How to Use
 Run the web app through app.py. Debug mode is on currently.
 
+# NEXT STEPS
+  * Rewrite SAS workflow as OO design. Keep it modular, but stick to essentials
+  * Build front-end workflow. May involve ajax.
+
 ## ISSUES
   * Fail-safe when 3rd party data is not found
   * Ajax - get list of flights associated with campaign
