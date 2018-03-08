@@ -17,16 +17,24 @@ class Report(object):
     Holds reports parameters and retrieved reporting data.
     """
 
-    def __init__(self, request_dict, is3rdPartyAdvertiser=False):
-        self.Advertiser = request_dict.get('advertiser')
-        self.startDate = request_dict.get('startDate')
-        self.endDate = request_dict.get('endDate')
+    def __init__(self, request_dict={}, is3rdPartyAdvertiser=False):
+        self.advertiser = request_dict.get('advertiser')
+        self.start_date = request_dict.get('startDate')
+        self.end_date = request_dict.get('endDate')
 
         self.is3rdPartyAdvertiser = is3rdPartyAdvertiser
+        self.sas = None
 
         # This may end up being a dictionary or a report subclass.
-        self.parameters = {}
-        self.sas = None
+        self.parameters = { "start_date": ("tactical_report[date_gte]", None),
+                            "end_date": ("tactical_report[date_lte]", None),
+                            "break_down_by": ("tactical_report[break_down_by]", "Day"),
+                            "advertiser_id": ("tactical_report[advertiser_id]", None),
+                            "campaigns": ("tactical_report[campaigns][]", None),
+                            "flights": ("tactical_report[flights][]", None),
+                            "creatives": ("tactical_report[creatives][]", None)
+        }
+
 
 
 
@@ -58,6 +66,6 @@ class SASReport(Report):
         decoded_content = self.report_data.content.decode("utf-8")
         start = decoded_content.index("<JobId>")
         end = decoded_content.index("</JobId>")
-        jobId = decoded_content[start + len("<JobId>"):end]
-        print("Job ID = ", jobId)
-        return jobId
+        job_id = decoded_content[start + len("<JobId>"):end]
+        print("Job ID = ", job_id)
+        return job_id
