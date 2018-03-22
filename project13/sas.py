@@ -23,7 +23,7 @@ class SAS(object):
         flights/placements.
         """
         # Construct a url and send as request
-        url = self.base_path
+        url = self.base_path + "/" + object + ".xml/" + ""
 
 
         response = requests.get(url, params=params, auth=(self.api_key, ''))
