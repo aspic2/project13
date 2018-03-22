@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Reports Page</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.10/dist/semantic.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.10/dist/semantic.min.js">
+  </script>
+</head>
+
+<body>
+
+
+<div class="ui container">
+  <h1>Report Builder</h1>
+  <div class="ui inverted segment">
+
+    <form class="ui inverted form" action="/report" method="GET">
+
+      <div class="field">
+        <label for="reportType">Report Type</label>
+        <select class="ui select" name="reportType">
+          <option value="performance">performance</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="advertiser">Advertiser</label>
+        <!-- Rewrite this as text input using ajax -->
+        <select class="ui dropdown" name="advertiser">
+          <option value=""></option>
+          {% for a in advertisers %}
+          <option value="{{a}}">{{a}}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="campaign">Campaign</label>
+        <!-- Rewrite this as text input using ajax -->
+        <select class="ui dropdown" name="campaign">
+          <option value="">none</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="placement">Placement</label>
+        <!-- Rewrite this as text input using ajax -->
+        <select class="ui select" name="placement">
+          <option value="Placement Name">Placement Name</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="startDate">Start Date</label>
+        <input type="date" name="startDate" value="2018-01-01">
+      </div>
+
+      <div class="field">
+        <label for="endDate">End Date</label>
+        <input type="date" name="endDate" value="2018-01-15">
+      </div>
+      <button type="submit" class="ui button">Submit</button>
+    </form>
+  </div>
+</div>
+</div>
+
+</body>
+
+</html>
