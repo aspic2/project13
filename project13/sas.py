@@ -6,8 +6,8 @@ import requests
 class SAS(object):
 
     def __init__(self):
-        self.api_key = secrets.sas_api_key
-        self.base_path = secrets.sas_base_path
+        self.api_key = sensitive.sas_api_key
+        self.base_path = sensitive.sas_base_path
         self.url = ""
 
 
@@ -17,14 +17,16 @@ class SAS(object):
         return self
 
 
-    def get_list_of(self, object, search_term):
+    def get_list_of(self, objects, search_term):
         """This will be the ajax method for auto-filling the web form
         It needs to be able to retrieve advertisers, campaigns, and
         flights/placements.
         """
         # Construct a url and send as request
-        url = self.base_path + "/" + object + ".xml/" + ""
+        url = self.base_path + "/" + objects + ".xml"
+        params = { "search[name_like]": search_term }
 
 
         response = requests.get(url, params=params, auth=(self.api_key, ''))
-        return self
+
+        return response.text
