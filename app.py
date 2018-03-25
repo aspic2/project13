@@ -7,16 +7,18 @@ import time
 from os import getcwd
 import json
 
-import dfareporting_utils
-from oauth2client import client
-
-
+# TODO: ADD dfareporting_utils to project
+#import dfareporting_utils
+#from oauth2client import client
 import flask
+
+from project13.sas import SAS
 
 app = flask.Flask(__name__)
 
+#TODO: ADD adv.json to project
 #Dictionary of all advertisers and their corresponding 3rd party data
-advertiser_data = json.load(open(getcwd() + "/resources/adv.json", 'r'))
+#advertiser_data = json.load(open(getcwd() + "/resources/adv.json", 'r'))
 
 @app.route("/report/new")
 def build_report():
@@ -28,7 +30,10 @@ def build_report():
 
 @app.route("/report")
 def run_report():
-    return flask.render_template("results.html", report_params=None, dcm_data={})
+    sas_report = SAS()
+    # test values
+    results = sas_report.get_list_of("campaigns", "2018")
+    return flask.render_template("results.html", results=results)
 
 #TODO: clean up redirect routes
 @app.route("/", defaults={'path': ''})
