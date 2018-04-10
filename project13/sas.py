@@ -28,5 +28,7 @@ class SAS(object):
 
 
         response = requests.get(url, params=params, auth=(self.api_key, ''))
-
-        return response.text
+        # TODO: parse the content to retrieve name and ID
+        print("The URL = ", response.url)
+        print(response.content)
+        return response.content
