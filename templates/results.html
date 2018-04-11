@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Results</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.10/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.2.10/dist/semantic.min.js"></script>
+  </head>
+
+  <body>
+    <div class="ui container">
+      <!-- Lazy fix -->
+      <br/>
+      <a href="/report/new">
+        <button type="button" class="ui button" name="newReport">New Report</button>
+      </a>
+      <h2>Report Parameters</h2>
+      <ul class="ui list">
+        <li>Report type =  {{ report_params.reportType }}</li>
+        <li>Advertiser = {{ report_params.advertiser }}</li>
+        <li>PlacementID = {{ report_params.placementID }}</li>
+        <li>Start Date = {{ report_params.startDate }}</li>
+        <li>End Date = {{ report_params.endDate }}</li>
+      </ul>
+
+      <div class="report">
+        <p>3rd Party Impressions = {{ "{:,}".format(dcm_data.get('impressions')) }}</p>
+        <p>3rd party Clicks = {{ "{:,}".format(dcm_data.get('clicks')) }}</p>
+      </div>
+
+    </div>
+
+
+  </body>
+</html>
