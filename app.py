@@ -18,7 +18,7 @@ app = Flask(__name__)
 
 #TODO: ADD adv.json to project
 #Dictionary of all advertisers and their corresponding 3rd party data
-#advertiser_data = json.load(open(getcwd() + "/resources/adv.json", 'r'))
+advertiser_data = json.load(open(getcwd() + "/resources/adv.json", 'r'))
 
 @app.route("/report/new")
 def build_report():
