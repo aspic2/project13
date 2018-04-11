@@ -2,6 +2,9 @@
 
 import sensitive
 import requests
+from os import getcwd
+from project13.parser import FileParser
+
 
 class SAS(object):
 
@@ -10,12 +13,10 @@ class SAS(object):
         self.base_path = sensitive.sas_base_path
         self.url = ""
 
-
     def build_url(self):
         """Add on all the subdirectories you need."""
         self.url = self.base_path
         return self
-
 
     def get_list_of(self, objects, search_term):
         """This will be the ajax method for auto-filling the web form
@@ -26,9 +27,9 @@ class SAS(object):
         url = self.base_path + "/" + objects + ".xml"
         params = { "search[name_like]": search_term }
 
-
         response = requests.get(url, params=params, auth=(self.api_key, ''))
         # TODO: parse the content to retrieve name and ID
         print("The URL = ", response.url)
         print(response.content)
+        fp = FileParser(str(response.text)).write_file()
         return response.content
