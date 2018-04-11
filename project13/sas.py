@@ -4,6 +4,7 @@ import sensitive
 import requests
 from os import getcwd
 from project13.parser import FileParser
+from project13.parser import XmlFile
 
 
 class SAS(object):
@@ -31,5 +32,5 @@ class SAS(object):
         # TODO: parse the content to retrieve name and ID
         print("The URL = ", response.url)
         print(response.content)
-        fp = FileParser(str(response.text)).write_file()
+        fp = XmlFile(str(response.text)).write_file()
         return response.content
